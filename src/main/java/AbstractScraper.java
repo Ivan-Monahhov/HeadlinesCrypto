@@ -14,6 +14,7 @@ public abstract class AbstractScraper {
     private void init(){
         ChromeOptions options = new ChromeOptions();
         options.setBinary("C:\\Program Files\\Google\\Chrome\\Application\\chrome.exe");
+        //options.addArguments("--lang=ru_ru");
         System.setProperty("webdriver.chrome.driver","src/main/resources/chromedriver.exe");
         driver = new ChromeDriver(options);
     }
