@@ -3,13 +3,15 @@ import org.openqa.selenium.WebElement;
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
+import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Set;
 
 public class ForkLogScraper extends AbstractScraper{
     @Override
     public List<String> scrape() {
-        List<String> headlines = new LinkedList<>();
+        Set<String> headlines = new HashSet<>();
         driver.get("https://forklog.com/");
         List<WebElement> elements = driver.findElements(By.xpath("//div[@class='text_blk']"));
         elements.forEach(webElement -> {
@@ -19,6 +21,6 @@ public class ForkLogScraper extends AbstractScraper{
             headlines.add(headline);
         });
         driver.close();
-        return headlines;
+        return headlines.stream().toList();
     }
 }
